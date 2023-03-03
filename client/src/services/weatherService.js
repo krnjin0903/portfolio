@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const weatherEndpoint = "http://api.weatherapi.com/v1";
+const weatherEndpoint = "https://api.weatherapi.com/v1";
 
 const getWeatherByCity = (query) => {
   const config = {

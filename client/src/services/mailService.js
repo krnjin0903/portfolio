@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const mailEndpoint = "http://localhost:3500/api/mail";
+const mailEndpoint = `${process.env.REACT_APP_URL}/api/mail`;
 
 const sendMail = (payload) => {
   const config = {

@@ -1,0 +1,42 @@
+.skill {
+  padding: 80px 0;
+  position: relative;
+  background-color: rgb(31, 0, 46);
+}
+
+.skill .box {
+  border-radius: 12px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px, 0 0 0 1px #e6ecf8;
+}
+
+.skill .box .col {
+  border-right: 1px solid #e6ecf8;
+  padding: 30px 0 10px 0;
+}
+
+.skill .box .col:last-child {
+  border-right: none;
+}
+
+.skill h2 {
+  font-size: 45px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.skill .box h3 {
+  padding-bottom: 20px;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.skill p {
+  color: #b8b8b8;
+  font-size: 18px;
+  letter-spacing: 1px;
+  line-height: 1.5em;
+  margin: 15px auto 30px auto;
+  text-align: center;
+  width: 50%;
+}

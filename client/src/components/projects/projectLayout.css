@@ -1,0 +1,16 @@
+.projectLayout {
+  padding: 120px 0 0 0;
+  min-height: 1080px;
+}
+
+.projectLayout .header {
+  padding: 50px 0;
+  background-image: url(../../image/projectBanner.jpg);
+  background-size: cover;
+}
+
+.projectLayout .row h2 {
+  font-size: 45px;
+  font-weight: 700;
+  text-align: center;
+}

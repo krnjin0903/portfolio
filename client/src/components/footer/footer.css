@@ -1,0 +1,21 @@
+.footer {
+  padding: 100px 0px 50px 0px;
+  background: linear-gradient(
+    90deg,
+    rgba(170, 54, 124, 0.2) 0%,
+    rgba(21, 10, 43, 1) 10%,
+    rgba(21, 10, 43, 1) 90%,
+    rgba(170, 54, 124, 0.2) 100%
+  );
+}
+.footer img {
+  width: 150px;
+}
+.footer p {
+  font-weight: 400;
+  font-size: 14px;
+  color: #b8b8b8;
+  letter-spacing: 0.5px;
+  text-align: end;
+  margin-top: 30px;
+}

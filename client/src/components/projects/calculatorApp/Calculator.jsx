@@ -2,65 +2,135 @@ import React, { useState, useEffect } from "react";
 import "./calculator.css";
 
 const Calculator = () => {
-  const [prevDisplay, setPrevDisplay] = useState(`\u00A0`);
+  const [currentNumber, setCurrentNumber] = useState("0");
+  const [prevNumber, setPrevNumber] = useState(`\u00A0`);
+
   const [currentDisplay, setCurrentDisplay] = useState("0");
+  const [prevDisplay, setPrevDisplay] = useState(`\u00A0`);
+
   const [operation, setOperation] = useState({
     name: "",
     value: "",
   });
+
   const [buttonDisable, setButtonDisable] = useState(false);
-  const [firstNumber, setFirstNumber] = useState();
 
   useEffect(() => {
-    if (!isFinite(currentDisplay) || isNaN(currentDisplay)) {
+    if (!isFinite(currentNumber) || isNaN(currentNumber)) {
       setButtonDisable(true);
     } else {
       setButtonDisable(false);
     }
-  }, [currentDisplay]);
+  }, [currentNumber]);
+
+  const changePrevNumber = (number, equation) => {
+    console.log(equation);
+    if (equation) {
+      setPrevNumber(number);
+      setPrevDisplay(equation);
+    } else {
+      setPrevNumber(number);
+      setPrevDisplay(convertNumber(number));
+    }
+  };
+
+  const changeCurrentNumber = (number) => {
+    setCurrentNumber(number);
+    setCurrentDisplay(convertNumber(number));
+  };
+
+  const convertNumber = (number) => {
+    if (isNaN(Number(number)) || number === "\u00A0") {
+      console.log("inside not a number");
+      return number;
+    }
+
+    const stringNumber = number.toString();
+    let result = number;
+    if (
+      stringNumber.includes(".") &&
+      !stringNumber.includes("e") &&
+      stringNumber.length > 12
+    ) {
+      const integerLength = stringNumber.split(".")[0].length;
+
+      if (integerLength < 11) {
+        return Number(result).toLocaleString("en-US", {
+          maximumFractionDigits: 11 - integerLength,
+        });
+      }
+    }
+    if (stringNumber.length > 12) {
+      return Number(result).toExponential(4);
+    }
+
+    let converted = Number(result).toLocaleString("en-US", {
+      maximumFractionDigits: 12,
+    });
+
+    return converted;
+  };
 
   const calculate = (selectedOperation) => {
-    const result = eval(firstNumber + operation.name + currentDisplay);
-    setPrevDisplay(firstNumber + operation.name + currentDisplay);
-    if (selectedOperation) {
+    const result = eval(prevNumber + operation.name + currentNumber);
+
+    if (selectedOperation !== "calculate") {
       setOperation(selectedOperation);
+      changePrevNumber(result);
     } else {
       setOperation({
         name: "",
         value: "",
       });
+      let equation = `${convertNumber(prevNumber)} ${
+        operation.value
+      } ${convertNumber(currentNumber)} =`;
+      changePrevNumber(result, equation);
     }
+
     return result;
   };
 
   const onClickCalculate = () => {
-    if (!operation?.name) {
+    if (!operation.name) {
+      changePrevNumber(`\u00A0`);
+      return;
+    } else if (!currentNumber) {
+      changeCurrentNumber(prevNumber);
+      changePrevNumber(`\u00A0`);
+      setOperation("");
       return;
     }
-    const result = calculate();
-    setCurrentDisplay(result);
+
+    const result = calculate("calculate");
+    changeCurrentNumber(result);
   };
 
   const onClickNumber = (e) => {
     const clickedButon = e.target.name;
     let number = 0;
 
-    if (!isFinite(currentDisplay) || isNaN(currentDisplay)) {
+    if (
+      !isFinite(currentNumber) ||
+      isNaN(currentNumber) ||
+      (Number.isInteger(currentNumber) && !operation?.name)
+    ) {
       onClickClear();
-      number = clickedButon;
+      changeCurrentNumber(clickedButon);
+      return;
     } else {
-      number = currentDisplay.concat(clickedButon);
+      number = currentNumber.concat(clickedButon);
     }
 
     if (number[0] === "0" && number.length > 1) {
       number = number.substring(1);
     }
 
-    if (number.length > 14) {
+    if (number.length > 10) {
       return;
     }
 
-    setCurrentDisplay(number);
+    changeCurrentNumber(number);
   };
 
   const onClickOperation = (e) => {
@@ -69,40 +139,54 @@ const Calculator = () => {
       value: e.target.value,
     };
 
-    if (!currentDisplay) {
+    if (!currentNumber) {
       setOperation(selectedOperation);
       return;
     }
 
-    if (currentDisplay && firstNumber && operation.name) {
+    if (currentNumber && prevNumber && operation.name) {
       const result = calculate(selectedOperation);
-      setPrevDisplay(result);
-      setFirstNumber(result);
-      setCurrentDisplay("");
+      changePrevNumber(result);
+      changeCurrentNumber("");
       return;
     }
 
     setOperation(selectedOperation);
-    setFirstNumber(currentDisplay);
-    setPrevDisplay(currentDisplay);
-    setCurrentDisplay("");
+    changePrevNumber(currentNumber);
+    changeCurrentNumber("");
+  };
+
+  const onClickPeriod = () => {
+    console.log(currentNumber);
+    if (!currentNumber) {
+      setCurrentNumber("0.");
+      setCurrentDisplay("0.");
+    } else if (currentNumber.includes(".")) {
+      return;
+    } else {
+      setCurrentNumber(currentNumber.concat("."));
+      setCurrentDisplay(currentNumber.concat("."));
+    }
   };
 
   const onClickClear = (e) => {
     setOperation("");
-    setPrevDisplay(`\u00A0`);
-    setCurrentDisplay("0");
+    changePrevNumber(`\u00A0`);
+    changeCurrentNumber("0");
   };
 
   const onClickSwitch = () => {
-    if (!currentDisplay) {
+    if (!currentNumber) {
       return;
     }
-    setCurrentDisplay(currentDisplay * -1);
+    changeCurrentNumber((currentNumber * -1).toString());
   };
 
   const onClickDelete = (e) => {
-    setCurrentDisplay(currentDisplay.slice(0, -1));
+    if (typeof currentNumber === "number") {
+      return;
+    }
+    changeCurrentNumber(currentNumber.slice(0, -1));
   };
 
   return (
@@ -111,11 +195,10 @@ const Calculator = () => {
       <div className="container">
         <div className="calculatorWrap">
           <div className="display">
-            <div className="prevDisplay">
-              {prevDisplay}
-              {operation.value}
+            <div className="prevNumber">
+              {prevDisplay} {operation.value}
             </div>
-            <div className="currentDisplay">{currentDisplay}</div>
+            <div className="currentNumber">{currentDisplay}</div>
           </div>
           <div className="keypad">
             <div className="row">
@@ -223,7 +306,7 @@ const Calculator = () => {
               <button
                 className="col"
                 name="."
-                onClick={onClickNumber}
+                onClick={onClickPeriod}
                 disabled={buttonDisable}
               >
                 .

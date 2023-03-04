@@ -1,5 +1,6 @@
 import placeholderImg from "../../../image/placeholder.png";
 import weatherApp from "../../../image/weatherAppThumb.png";
+import CalculatorApp from "../../../image/calculatorAppThumb.png";
 
 const frontEndProjects = [
   {
@@ -9,10 +10,10 @@ const frontEndProjects = [
     link: "weatherApp",
   },
   {
-    title: "Project 2",
+    title: "Calculator App",
     description: "React.js",
-    imgUrl: placeholderImg,
-    link: "weatherApp",
+    imgUrl: CalculatorApp,
+    link: "CalculatorApp",
   },
   {
     title: "Project 3",

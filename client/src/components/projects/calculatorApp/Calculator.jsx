@@ -9,7 +9,7 @@ const Calculator = () => {
     value: "",
   });
   const [buttonDisable, setButtonDisable] = useState(false);
-  const [firstNumbrer, setFirstNumber] = useState();
+  const [firstNumber, setFirstNumber] = useState();
 
   useEffect(() => {
     if (!isFinite(currentDisplay) || isNaN(currentDisplay)) {
@@ -19,16 +19,25 @@ const Calculator = () => {
     }
   }, [currentDisplay]);
 
+  const calculate = (selectedOperation) => {
+    const result = eval(firstNumber + operation.name + currentDisplay);
+    setPrevDisplay(firstNumber + operation.name + currentDisplay);
+    if (selectedOperation) {
+      setOperation(selectedOperation);
+    } else {
+      setOperation({
+        name: "",
+        value: "",
+      });
+    }
+    return result;
+  };
+
   const onClickCalculate = () => {
     if (!operation?.name) {
       return;
     }
-    const result = eval(firstNumbrer + operation.name + currentDisplay);
-    setPrevDisplay(firstNumbrer + operation.name + currentDisplay);
-    setOperation({
-      name: "",
-      value: "",
-    });
+    const result = calculate();
     setCurrentDisplay(result);
   };
 
@@ -54,19 +63,25 @@ const Calculator = () => {
     setCurrentDisplay(number);
   };
 
-  const onClickSwitch = () => {
-    setCurrentDisplay(currentDisplay * -1);
-  };
-
-  const onClickDelete = (e) => {
-    setCurrentDisplay(currentDisplay.slice(0, -1));
-  };
-
   const onClickOperation = (e) => {
     const selectedOperation = {
       name: e.target.name,
       value: e.target.value,
     };
+
+    if (!currentDisplay) {
+      setOperation(selectedOperation);
+      return;
+    }
+
+    if (currentDisplay && firstNumber && operation.name) {
+      const result = calculate(selectedOperation);
+      setPrevDisplay(result);
+      setFirstNumber(result);
+      setCurrentDisplay("");
+      return;
+    }
+
     setOperation(selectedOperation);
     setFirstNumber(currentDisplay);
     setPrevDisplay(currentDisplay);
@@ -77,6 +92,14 @@ const Calculator = () => {
     setOperation("");
     setPrevDisplay("");
     setCurrentDisplay("0");
+  };
+
+  const onClickSwitch = () => {
+    setCurrentDisplay(currentDisplay * -1);
+  };
+
+  const onClickDelete = (e) => {
+    setCurrentDisplay(currentDisplay.slice(0, -1));
   };
 
   return (

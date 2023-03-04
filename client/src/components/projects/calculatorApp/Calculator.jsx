@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./calculator.css";
 
 const Calculator = () => {
-  const [prevDisplay, setPrevDisplay] = useState("");
+  const [prevDisplay, setPrevDisplay] = useState(`\u00A0`);
   const [currentDisplay, setCurrentDisplay] = useState("0");
   const [operation, setOperation] = useState({
     name: "",
@@ -46,8 +46,8 @@ const Calculator = () => {
     let number = 0;
 
     if (!isFinite(currentDisplay) || isNaN(currentDisplay)) {
+      onClickClear();
       number = clickedButon;
-      setPrevDisplay("");
     } else {
       number = currentDisplay.concat(clickedButon);
     }
@@ -90,11 +90,14 @@ const Calculator = () => {
 
   const onClickClear = (e) => {
     setOperation("");
-    setPrevDisplay("");
+    setPrevDisplay(`\u00A0`);
     setCurrentDisplay("0");
   };
 
   const onClickSwitch = () => {
+    if (!currentDisplay) {
+      return;
+    }
     setCurrentDisplay(currentDisplay * -1);
   };
 

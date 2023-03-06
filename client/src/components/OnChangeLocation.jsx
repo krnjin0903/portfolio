@@ -9,6 +9,8 @@ const OnChangeLocation = () => {
 
   useEffect(() => {
     console.log("change Location");
+    console.log(process.env);
+    console.log(process.env.REACT_APP_URL);
     window.scrollTo(0, 0);
     dispatch(resetTodoList());
   }, [pathname]);

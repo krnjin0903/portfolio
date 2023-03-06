@@ -16,19 +16,19 @@ const frontEndProjects = [
     link: "CalculatorApp",
   },
   {
-    title: "Project 3",
-    description: "React.js",
+    title: "Todo List App",
+    description: "MongoDB Express.js Node.js React.js",
     imgUrl: placeholderImg,
-    link: "weatherApp",
+    link: "todoApp",
   },
 ];
 
 const fullStackProjects = [
   {
-    title: "full Stack",
+    title: "MiVet",
     description: "React.js",
     imgUrl: placeholderImg,
-    link: "weatherApp",
+    link: "mivet",
   },
   {
     title: "Project 2",

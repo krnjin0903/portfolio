@@ -1,6 +1,5 @@
 import React from "react";
 import "./mivet.css";
-import { Link } from "react-router-dom";
 
 const Mivet = () => {
   return (

@@ -61,7 +61,6 @@
   padding: 14px 48px;
   font-size: 18px;
   border-radius: 0;
-  transition: 0.3s ease-in-out;
 }
 
 .weatherApp .message {

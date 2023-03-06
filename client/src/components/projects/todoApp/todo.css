@@ -1,0 +1,130 @@
+.todoApp {
+  padding: 50px 0 0 0;
+}
+
+.todoApp h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.todoApp .container {
+  border: solid 1px;
+  padding: 50px 0 50px 0;
+}
+
+.getTodoList {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 70%;
+}
+
+.getTodoList form {
+  width: 100%;
+}
+
+.getTodoList input {
+  align-self: center;
+  width: 400px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  color: #fff;
+  margin: 0 20px;
+  padding: 0 20px;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+}
+
+.getTodoList button {
+  align-self: center;
+  font-weight: 700;
+  color: #000;
+  background-color: #fff;
+  padding: 14px 48px;
+  font-size: 18px;
+  border-radius: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.listName {
+  align-self: center;
+  text-align: end;
+  font-weight: 500;
+  width: 30%;
+  overflow-wrap: break-word;
+  font-size: 25px;
+}
+
+.addButton {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.addButton button {
+  font-weight: 700;
+  color: #000;
+  background-color: #fff;
+  padding: 0 20px;
+  font-size: 40px;
+  border-radius: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.addTodoModalTitle {
+  color: #121212;
+}
+
+.addTodoModalBody input {
+  border-radius: 5px;
+  width: 90%;
+  margin: auto;
+  height: 40px;
+}
+.addTodoModalBody .errorMessage {
+  color: rgb(151, 36, 36);
+  margin: 5px 0 0 30px;
+}
+
+.addTodoModalBody button {
+  font-weight: 500;
+  margin: 20px 40px 20px auto;
+  width: 20%;
+  border-radius: 5px;
+  font-size: 18px;
+  height: 40px;
+}
+
+.todoCard {
+  width: 70% !important;
+  margin: 20px auto;
+  padding: 20px 10px;
+  border: solid 1px #fff;
+  border-radius: 5px;
+  display: flex;
+  position: relative;
+}
+
+.todoCard .todoTitle {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.todoCard .todoDescription {
+  font-size: 20px;
+}
+
+.todoCard .completed {
+  text-decoration: line-through;
+}
+
+.todoCard .itemDelete {
+  font-size: 20px;
+  background-color: transparent;
+  color: #fff;
+  position: absolute;
+  align-self: center;
+  right: 10%;
+}

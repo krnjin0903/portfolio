@@ -1,0 +1,28 @@
+.mivet {
+  padding: 50px 0 0 0;
+}
+
+.mivet h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mivet .container {
+  border: solid 1px;
+  padding: 50px 0 50px 0;
+}
+
+.mivet .description {
+  font-size: 20px;
+  text-align: center;
+}
+
+.mivet .link {
+  color: #fff;
+  font-size: 30px;
+  text-decoration: none;
+  border: 1px solid #fff;
+  width: 30%;
+  text-align: center;
+  margin: auto;
+}

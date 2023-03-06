@@ -35,8 +35,8 @@ const Skill = () => {
             <div className="col">
               <h2>Skills</h2>
               <p>
-                Lorefdjsjlf fkjdalsfjkd j lsdjk jfk dfsjlfjka fjlkfj kasdjlfj
-                fkljf
+                These are the skills that I have used to create my mini apps and
+                projects.
               </p>
             </div>
           </div>

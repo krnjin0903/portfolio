@@ -1,8 +1,9 @@
-import placeholderImg from "../../../image/placeholder.png";
 import weatherApp from "../../../image/weatherAppThumb.png";
-import CalculatorApp from "../../../image/calculatorAppThumb.png";
+import calculatorApp from "../../../image/calculatorAppThumb.png";
+import mivet from "../../../image/mivet.png";
+import todoApp from "../../../image/todoApp.png";
 
-const frontEndProjects = [
+const miniApps = [
   {
     title: "Weather App",
     description: "React.js",
@@ -12,36 +13,24 @@ const frontEndProjects = [
   {
     title: "Calculator App",
     description: "React.js",
-    imgUrl: CalculatorApp,
+    imgUrl: calculatorApp,
     link: "CalculatorApp",
   },
   {
     title: "Todo List App",
     description: "MongoDB Express.js Node.js React.js",
-    imgUrl: placeholderImg,
+    imgUrl: todoApp,
     link: "todoApp",
   },
 ];
 
-const fullStackProjects = [
+const projects = [
   {
     title: "MiVet",
-    description: "React.js",
-    imgUrl: placeholderImg,
+    description: "React.js C# SQL ASP.NET",
+    imgUrl: mivet,
     link: "mivet",
-  },
-  {
-    title: "Project 2",
-    description: "React.js",
-    imgUrl: placeholderImg,
-    link: "weatherApp",
-  },
-  {
-    title: "Project 3",
-    description: "React.js",
-    imgUrl: placeholderImg,
-    link: "weatherApp",
   },
 ];
 
-export { frontEndProjects, fullStackProjects };
+export { miniApps, projects };

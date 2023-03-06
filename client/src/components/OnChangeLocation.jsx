@@ -8,7 +8,6 @@ const OnChangeLocation = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("change Location");
     window.scrollTo(0, 0);
     dispatch(resetTodoList());
   }, [pathname]);

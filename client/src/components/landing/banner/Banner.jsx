@@ -48,10 +48,10 @@ const Banner = () => {
               <span className="txt-rotate">
                 <span className="wrap">{currentText}</span>
               </span>
+              <p>Welcome to my portfolio!</p>{" "}
               <p>
-                fdafdasf fddafdasf fdaslfj jfksdjfl djkfjlfj kjlfkdjfjdkajfldsj
-                ldafdasf fdaslfj jfksdjfl djkfjlfj kjlfkdjfjdkajfldsj laslfj
-                jfksdjfl djkfjlfj kjlfkdjfjdkajfldsj lk
+                For most of my web application, I will be using React.js for
+                frontend. For backend, I will be using node.js or ASP.NET.
               </p>
               <button onClick={() => (window.location.href = "/#contact")}>
                 Let's connect <ArrowRightCircle size={25} />
